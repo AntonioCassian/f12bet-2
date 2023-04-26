@@ -41,24 +41,22 @@ a:hover{
   color: #C9F73C;
 }
 
-/* degrade para a barra vertical */
-::-webkit-scrollbar-thumb {
-background: #2e9dd8;
-background: -moz-linear-gradient(top, #333333 0%, #3f69b1 25%, #2e9dd8 50%, #3f69b1 76%, #333333 100%);
-background: -webkit-linear-gradient(top, #333333 0%,#3f69b1 25%,#2e9dd8 50%,#3f69b1 76%,#333333 100%);
-background: linear-gradient(to bottom, #333333 0%,#3f69b1 25%,#2e9dd8 50%,#3f69b1 76%,#333333 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#333333',GradientType=0 );
+::-webkit-scrollbar {
+background:#000;
+width: 20px;
+height: 4px;
 }
  
-/* degrade para a barra horizontal com a direção do degrade alterada */
-::-webkit-scrollbar-thumb:horizontal {
-background: #2e9dd8;
-background: -moz-linear-gradient(left, #333333 0%, #3f69b1 25%, #2e9dd8 50%, #3f69b1 76%, #333333 100%);
-background: -webkit-linear-gradient(left, #333333 0%,#3f69b1 25%,#2e9dd8 50%,#3f69b1 76%,#333333 100%);
-background: linear-gradient(to right, #333333 0%,#3f69b1 25%,#2e9dd8 50%,#3f69b1 76%,#333333 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#333333',GradientType=0 );
+::-webkit-scrollbar-track {
+background:#000;
 }
 
+::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
 </style>
 <!--::-webkit-scrollbar {
 background:#000;

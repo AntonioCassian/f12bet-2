@@ -8,7 +8,7 @@
         <MenuBar />
       </aside>
       <main>
-        <Picture />
+        <Carousel />
         <TabelaMain 
         :futebol_jogos="futebol_jogos"
         :basquete_jogos="basquete_jogos"
@@ -26,7 +26,7 @@
 <script>
 // @ is an alias to /src
 import Header from '@/components/Header.vue'
-import Picture from '@/components/Picture.vue'
+import Carousel from '@/components/carousel/Carroulsel.vue'
 import ContentTop from '@/components/ContetTop.vue'
 import TabelaMain from '@/components/Table.vue'
 import BoletimAposta from '@/components/Boletim.vue'
@@ -40,7 +40,7 @@ export default {
     ContentTop,
     MenuBar,
     TabelaMain,
-    Picture,
+    Carousel,
     BoletimAposta,
     Footer
   },

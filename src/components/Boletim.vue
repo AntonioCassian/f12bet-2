@@ -4,28 +4,37 @@
             <span>A=-</span>
             <span>Boletim de Aposta</span>
         </div>
-        <tbody >
-            <tr class="titulo-tr" >
-                <td colspan="6">
-                    <div class="selecoes">
-                        <span class="competidor">America Mineiro MG - Atletico Belo Horizonte MG</span>
+        <div>
+            <table>
+                <tbody>
+                    <div class="jogo" v-for="aposta in boletim" :key="aposta.id">
+                        <tr class="titulo-tr">
+                                <td colspan="5">
+                                    <span class="competidor">{{aposta.time1}} - {{ aposta.time2 }}</span>
+                                </td>
+                        </tr>
+
+                        <tr class="sec-minitab">
+                            <td class="" >
+                                <span class="jogada" >1</span>
+                                <span class="jogada" >1x2</span>
+                            </td>
+                            <td class="number" >
+                                <span class="jogada">{{aposta.casa}}</span>
+                                <span class="jogada cancel" >x</span>
+                            </td>
+                        </tr>
+                        <tr class="line">
+                            <td colspan="5"></td>
+                        </tr>
                     </div>
-                </td>
-            </tr>
-                    <tr class="sec-minitab">
-                    <td class="" >
-                        <span class="jogada" >1</span>
-                        <span class="jogada" >1x2</span>
-                    </td>
-                    <td class="number" >
-                        <span class="jogada" >2.05</span>
-                        <span class="jogada cancel" >x</span>
-                    </td>
-                    </tr>
-                    <tr class="line">
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <tbody>
                     <tr class="newA">
                         <td></td>
                         <td>
@@ -34,7 +43,7 @@
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Seleções</span></td>
-                        <td><span class="jogada">1</span></td>
+                        <td><span class="jogada">{{ $store.state.boletim.length }}</span></td>
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Odds totais</span></td>
@@ -53,6 +62,8 @@
                             </td>
                     </tr>
                 </tbody>
+            </table>
+        </div>
                 <div class="ganho-max">
                     <span class="txt-gan">Ganho máximo</span>
                     <span class="valor-G">0.00</span>
@@ -70,6 +81,11 @@ export default {
         return{
             aposta: null
         }
+    },
+    computed:{
+        boletim(){
+            return this.$store.state.boletim
+        },
     }
 }
 </script>
@@ -78,6 +94,17 @@ export default {
 .boletim{
     width: 295px;
     background: #31343b;
+}
+table{
+    width: 100%;
+}
+
+.jogo{
+    width: 100%;
+    display: inline-table;
+}
+.selecoes{
+    background-color: #232429;
 
 }
 .reload{

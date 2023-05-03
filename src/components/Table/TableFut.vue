@@ -6,8 +6,8 @@
         </td>
 
     <td class="nomes">
-        <div >
-            <a href="">
+        <div>
+            <a @click="jogoid">
                 <span class="competidor">{{ jogoFut.time1 }}</span> 
                 <span> - </span> 
                 <span class="competidor">{{ jogoFut.time2 }}</span></a>
@@ -51,6 +51,9 @@ export default {
     methods:{
         addUm(){
             this.$store.commit('addUm', this.jogoFut)
+        },
+        jogoid(){
+            this.$router.push({path:'/TableJogo'})
         },
     }
 

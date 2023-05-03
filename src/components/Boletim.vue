@@ -15,7 +15,7 @@
                         </tr>
 
                         <tr class="sec-minitab">
-                            <td class="" >
+                            <td class="">
                                 <span class="jogada" >1</span>
                                 <span class="jogada" >1x2</span>
                             </td>

@@ -56,10 +56,5 @@ export default {
   background: #000000;
   overflow: auto;
 }
-.container{
-  display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-columns: 300px 2.5fr 300px;
-    gap: 2px;
-}
+
 </style>

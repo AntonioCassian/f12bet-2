@@ -1,8 +1,12 @@
 <template>
   <div class="aovivo">
-    <ComHeader />
+    <ComHeader></ComHeader>
+    
   </div>
 </template>
+
+
+
 
 <script>
 import ComHeader from '@/components/Header.vue'
@@ -14,6 +18,3 @@ export default {
 }
 </script>
 
-<style scoped>
-  
-</style>

@@ -70,7 +70,14 @@ export default new Router ({
     path: '/register',
     name: 'register',
     component: () => import('../views/Register.vue')
-  }]
+  },
+  {
+    path: '/TableJogo',
+    name: 'register',
+    component: () => import('../views/TableJogo.vue')
+    //aqui recebe um id
+  },
+]
 })
 
 

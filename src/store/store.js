@@ -31,6 +31,10 @@ export default new Vuex.Store({
     mutations:{
         addUm(state, data){
             state.boletim.push(data)
+        },
+        removeUm(state, id) {
+            const indx = state.boletim.findIndex(obj => obj.id === id)
+            state.boletim.splice(indx, 1)
         }
     }
 })

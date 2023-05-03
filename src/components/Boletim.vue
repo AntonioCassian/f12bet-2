@@ -21,7 +21,7 @@
                             </td>
                             <td class="number" >
                                 <span class="jogada">{{aposta.casa}}</span>
-                                <span class="jogada cancel" >x</span>
+                                <span class="jogada cancel" @click="removeUm">x</span>
                             </td>
                         </tr>
                         <tr class="line">
@@ -86,7 +86,15 @@ export default {
         boletim(){
             return this.$store.state.boletim
         },
+    },
+    methods: {
+        removeUm(){
+            const remove = this.$store.state.boletim.id
+            
+            this.$store.commit('removeUm', remove)
+        }
     }
+    
 }
 </script>
 

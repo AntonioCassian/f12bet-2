@@ -47,7 +47,7 @@
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Odds totais</span></td>
-                        <td><span class="jogada">4.54</span></td>
+                        <td><span class="jogada">{{odds}}</span></td>
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Aposta</span></td>
@@ -66,7 +66,7 @@
         </div>
                 <div class="ganho-max">
                     <span class="txt-gan">Ganho máximo</span>
-                    <span class="valor-G">0.00</span>
+                    <span class="valor-G">{{ ganho }}</span>
                 </div>
                 <div class="reload">
                     <button class="ultBtn btn">Nova aposta</button>
@@ -75,14 +75,19 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'BoletimAposta',
     data(){
         return{
-            aposta: null
+            aposta: 0
         }
     },
     computed:{
+        ...mapGetters({
+            odds: 'odds',
+            ganho: 'max'
+        }),
         boletim(){
             return this.$store.state.boletim
         },

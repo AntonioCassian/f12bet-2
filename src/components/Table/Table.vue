@@ -229,6 +229,12 @@ table{
     font-size: 13px;
     text-transform: uppercase;
 }
+.title-pop{
+    color: #fff;
+    line-height: 26px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
 .bd-td{
     font-size: 11px;
     padding: 2px 3px;

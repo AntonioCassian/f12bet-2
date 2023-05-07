@@ -36,5 +36,11 @@ export default new Vuex.Store({
             const indx = state.boletim.findIndex(obj => obj.id === id)
             state.boletim.splice(indx, 1)
         }
+    },
+    getters:{
+        odds(state){
+            return state.boletim.reduce((total, atual) => total += atual.casa, 0)
+        },
+        
     }
 })

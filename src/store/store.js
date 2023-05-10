@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+export default new Vuex.Store ({
     state:{
         futebol_jogos: [
             {id: 1, data:"04/04", hora:"16:00", time1: "Chelsea", time2:"Liverpool", casa: 2.25, empat: 3.43, fora: 3.19, pessoas: "+1185"},
@@ -26,21 +26,27 @@ export default new Vuex.Store({
         tenis_jogos: [
                 {id: 1, data:"06/04", hora:"14:20", time1: "Bautista-Agut, Roberto", time2:"Halys, Quentin", casa: 1.58, fora: 2.29, pessoas: "+20"},
         ],
-        boletim: []
+        boletim: [],
+        jogo: null
     },
     mutations:{
         addUm(state, data){
-            state.boletim.push(data)
+            if(this.boletim === 0) {
+                state.boletim.push.default('Não há seleções disponíveis')
+            }
+            return state.boletim.push(data)
         },
         removeUm(state, id) {
             const indx = state.boletim.findIndex(obj => obj.id === id)
             state.boletim.splice(indx, 1)
-        }
+        },
     },
     getters:{
         odds(state){
             return state.boletim.reduce((total, atual) => total += atual.casa, 0)
         },
-        
+        default(state){
+            return state.boletim.reduce('Não há seleções disponíveis')
+        }
     }
 })

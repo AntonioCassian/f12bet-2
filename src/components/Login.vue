@@ -1,16 +1,16 @@
 <template>
     <div class="popup" v-show="closed">
-            <form class="form-control">
+            <form class="form-control" @submit.prevent="submit()">
                 <div class="closePop"><span class="fechar" @click="closed = !closed">x</span></div>
                 <div class="logo">
                     <img src="@/assets/logo.png" alt="">
                 </div>
                 <div class="text">Entrar</div>
                 <div class="inputs">
-                    <input type="text" placeholder="Usuário (Login)"/>
+                    <input type="text" placeholder="Usuário (Login)" v-model="form.user"/>
                 </div>
                 <div class="inputs">
-                    <input type="password" placeholder="Senha"/>
+                    <input type="password" placeholder="Senha" v-model="form.senha"/>
                 </div>
 
                 <div class="btn">
@@ -26,7 +26,16 @@ export default {
     name: 'Login_',
     data(){
         return{
-            closed: true
+            closed: true,
+            form:{
+                user: '',
+                senha: ''
+            }
+        }
+    },
+    methods: {
+        submit() {
+            console.log(this.form)
         }
     }
 }

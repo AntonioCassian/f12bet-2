@@ -73,7 +73,7 @@ export default new Router ({
   },
   {
     path: '/TableJogo/:id',
-    name: 'register',
+    name: 'jogoID',
     component: () => import('../views/TableJogo.vue')
     //aqui recebe um id
   },

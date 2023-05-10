@@ -7,10 +7,10 @@
 
     <td class="nomes">
         <div>
-            <a @click="jogoid">
+            <router-link :to="{name: 'jogoID', params: {id: jogoFut.id}}">
                 <span class="competidor">{{ jogoFut.time1 }}</span> 
                 <span> - </span> 
-                <span class="competidor">{{ jogoFut.time2 }}</span></a>
+                <span class="competidor">{{ jogoFut.time2 }}</span></router-link>
         </div>
     </td>
 
@@ -42,21 +42,15 @@
 <script>
 export default {
     name: "TableFut",
-    computed:{
-        futebol_jogos(){
-            return this.$store.state.futebol_jogos
-        }
-    },
     props:{jogoFut: Object},
     methods:{
         addUm(){
             this.$store.commit('addUm', this.jogoFut)
         },
         jogoid(){
-            this.$router.push({path:'/TableJogo'})
+            this.$router.push({name:'jogoID', params:{id: this.JogoFut.id}})
         },
-    }
-
+    },
 }
 </script>
 

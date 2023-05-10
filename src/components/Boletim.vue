@@ -4,9 +4,14 @@
             <span>A=-</span>
             <span>Boletim de Aposta</span>
         </div>
-        <div>
+            <h5 v-if="boletin"></h5>
+        <div class="verificacao" >
+            <div>
             <table>
                 <tbody>
+                    <div class="apres-not" v-if="boletim == ''">
+                        <span>Não há seleções disponíveis</span>
+                    </div>
                     <div class="jogo" v-for="aposta in boletim" :key="aposta.id">
                         <tr class="titulo-tr">
                                 <td colspan="5">
@@ -31,10 +36,10 @@
                     
                 </tbody>
             </table>
-        </div>
-        <div>
-            <table>
-                <tbody>
+            </div>
+        <div >
+            <table >
+                <tbody v-if="boletim != ''">
                     <tr class="newA">
                         <td></td>
                         <td>
@@ -51,7 +56,14 @@
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Aposta</span></td>
-                        <td><span class="jogada"><input type="text" class="valorInp"></span></td>
+                        <td><span class="jogada">
+                        <input 
+                            type="text" 
+                            class="valorInp" 
+                            value="0.00" 
+                            v-model="ganho"
+                            placeholder="0.00"
+                            /></span></td>
                     </tr>
                     <tr class="sec-minitab">
                         <td>
@@ -61,13 +73,21 @@
                                 <span><input type="checkbox" class="check" name="" id=""></span>
                             </td>
                     </tr>
+                    <tr>
+                        
+                        <td class="ganho-max" colspan="4">
+                            <span class="txt-gan">Ganho máximo</span>
+                            <div class="valor-G">
+                                <span>{{ ganho * 2 }}</span>
+                            </div>
+                        </td>
+                        
+                    </tr>
                 </tbody>
             </table>
+        </div >
         </div>
-                <div class="ganho-max">
-                    <span class="txt-gan">Ganho máximo</span>
-                    <span class="valor-G">{{ ganho }}</span>
-                </div>
+      
                 <div class="reload">
                     <button class="ultBtn btn">Nova aposta</button>
                 </div>
@@ -80,13 +100,14 @@ export default {
     name: 'BoletimAposta',
     data(){
         return{
-            aposta: 0
+            ganho: ''
         }
     },
     computed:{
         ...mapGetters({
             odds: 'odds',
-            ganho: 'max'
+            defaults: 'default'
+            
         }),
         boletim(){
             return this.$store.state.boletim
@@ -111,35 +132,44 @@ export default {
 table{
     width: 100%;
 }
-
+.apres-not{
+    color: #fff;
+    font-size: 11px;
+    background: #464852;
+    padding: 4px;
+}
 .jogo{
     width: 100%;
     display: inline-table;
 }
 .selecoes{
     background-color: #232429;
-
 }
 .reload{
     text-align: center;
 }
 .ganho-max{
-    background: #892;
-    padding: 0px -8px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
     background: #31343b;
     color: #fff;
+    text-align: center;
 }
 .txt-gan{
     background: #000;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
-    width: 220px;
+    padding: 1px 6px;
     border-radius: 5px 5px 0 0;
+    display: block;
+}
+.valor-G{
+    text-align: center;
+    color: #c9f73c;
+    font-size: 30px;
+    line-height: 36px;
+    background: #414247;
+    border: 2px solid #000;
+    border-radius: 0px 0px 5px 5px;
 }
 .title{
     background-color: #232429;
@@ -185,6 +215,9 @@ table{
 }
 .ultBtn{
     width: 50%;
+    padding: 10px 0;
+    font-size: 12px;
+    margin: 8px;
 }
 .jogada{
     color: #fff;
@@ -200,6 +233,6 @@ table{
 }
 
 .cancel{
-
+    cursor: pointer;
 }
 </style>

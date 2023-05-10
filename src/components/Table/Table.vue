@@ -144,6 +144,7 @@ export default {
         },
         futebol_jogos(){
             return this.$store.state.futebol_jogos
+            //return this.$store.state.jogos
         },
         basquete_jogos(){
             return this.$store.state.basquete_jogos
@@ -166,6 +167,9 @@ export default {
         
         //id: Number, data: String, hora: String, time1: String, time2:String, casa: Number, empat: Number, fora: Number, pessoas: String,
     },
+    mounted(){
+        this.$store.dispatch('getJogos')
+    }
     
 }
 </script>

@@ -23,7 +23,7 @@
 
 <script>
 export default {
-    name: 'Login_',
+    name: 'loginVue',
     data(){
         return{
             closed: true,

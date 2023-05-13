@@ -21,10 +21,7 @@
             {"id": 1, "data":"06/04", "hora":"14:20", "time1": "Bautista-Agut, Roberto", "time2":"Halys, Quentin", "casa": 1.58, "fora": 2.29, "pessoas": "+20"}
     ],
     "boletim": [],
-    "login":[
-        {
-            "user": "teste",
-            "senha": "123asd"
-        }
+    "users":[
+        {"id": 1, "cpf": "12345678911", "nome": "AAAAAA", "data":"04/04/2000", "user": "teste", "email": "teste@gmail.com", "senha": "123asd", "tel": "12387765432"}
     ]
 }

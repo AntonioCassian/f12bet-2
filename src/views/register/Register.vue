@@ -26,7 +26,7 @@
                     <div class="padd" >
                         <span class="txt">{{citacoes[indice].title}}</span>
                     </div>
-                    <form @submit.prevent="submit">
+                    <form @submit.prevent="submit()">
                         <fieldset class="field" v-if="numero === 0">
                             <div  class="divisorHead">
                                 <InputLabel class="txt  padd" label="CPF">
@@ -34,7 +34,7 @@
                                 type="text"
                                 required
                                  v-mask="['###.###.###-##']"
-                                 v-model="usuario.cpf"
+                                 v-model="form.cpf"
                                  />
                             </InputLabel>
                             </div>
@@ -46,7 +46,7 @@
                             <div class="divisorHead">
                                 <InputLabel class="txt  padd" label="Nome Completo">
                                 <input type="text"
-                                v-model="usuario.nome"
+                                v-model="form.nome"
                                 />
                             </InputLabel>
                             </div>
@@ -54,7 +54,7 @@
                                 <InputLabel class="txt  padd" 
                                 label="Data De Nascimento">
                                 <input type="date"
-                                v-model="usuario.data"
+                                v-model="form.dataNas"
                                 />
                             </InputLabel>
                             </div>
@@ -69,21 +69,21 @@
                                 <InputLabel class="txt  padd" label="Usuário (Login)">
                                     <input 
                                     type="text"
-                                    v-model="usuario.user"
+                                    v-model="form.user"
                                     />
                                 </InputLabel>
                             </div>
                             <div class="divisorHead">
                                 <InputLabel class="txt  padd" label="E-Mail">
                                     <input type="email"
-                                    v-model="usuario.email"/>
+                                    v-model="form.email"/>
                                 </InputLabel>
                             </div>
                             <div class="divisorHead">
                                 <InputLabel class="txt  padd" label="Senha">
                                     <input 
                                     type="password"
-                                    v-model="usuario.senha"/>
+                                    v-model="form.senha"/>
                                 </InputLabel>
                             </div>
                             <div class="divisorHead">
@@ -91,7 +91,7 @@
                                     <input 
                                     type="tel"
                                     v-mask="['(##) #####-####']"
-                                    v-model="usuario.tel"
+                                    v-model="form.tel"
                                     />
                                 </InputLabel>
                             </div>
@@ -99,14 +99,14 @@
                                 <InputLabel class="txt  padd" label="Promo Code">
                                     <input
                                      type="text"
-                                     v-model="usuario.code"
+                                     v-model="form.code"
                                      />
                                 </InputLabel>
                             </div>
                             <div class="checkdiv">
                                 <input class="check" 
                                 type="checkbox"
-                                v-model="usuario.check"
+                                v-model="form.check"
                                 />
                                 <span class="spancheck">Sou maior de 18 anos <a href="" target="_blank">Termos e Condições</a><br /> Eu li e aceito</span>
                             </div>
@@ -128,9 +128,10 @@
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import InputLabel from '@/components/InputLabel.vue'
+import { mapActions } from 'vuex'
 
 export default {
-    name: 'RegisterApp',
+    name: 'registerA',
     components: {
         Header,
         Footer,
@@ -143,10 +144,10 @@ export default {
         atv: false,
         width: 0,
         width2: 0,
-        usuario:{
+        form:{
             cpf: '',
             nome: '',
-            data: '',
+            dataNas: '',
             user: '',
             email: '',
             senha: '',
@@ -157,19 +158,16 @@ export default {
         citacoes: [
             {title: 'Informação Pessoal'},
             {title: ''},
-            {title: ''}
+            {title: 'Informação Pessoal'}
         ]
     }
    },
    methods: {
+    
     next(e){
        this.numero ++
        let valor= 0  
        this.errors= []
-       console.log(this.numero)
-       console.log(this.usuario.cpf)
-       console.log(this.usuario.nome)
-       console.log(this.usuario.data)
        
        e.preventDefault();
        if(this.numero === 1) {
@@ -179,7 +177,7 @@ export default {
            valor += 5
             this.width = `${valor}%`
             if(valor == 50) {
-                if(this.usuario.cpf === ''){
+                if(this.form.cpf === ''){
                     clearInterval(tempo)
                     this.numero = 0
                     e.preventDefault();
@@ -196,14 +194,14 @@ export default {
            valor += 5
             this.width2 = `${valor}%`
             if(valor == 40) {
-                if(this.usuario.nome === ''){
+                if(this.form.nome === ''){
                     clearInterval(tempo)
                     this.numero = 1
                     e.preventDefault();
                 }
             }
             if(valor == 80) {
-                if(this.usuario.data === ''){
+                if(this.form.dataNas === ''){
                     clearInterval(tempo)
                     this.numero = 1
                     e.preventDefault();
@@ -241,10 +239,22 @@ export default {
         },100)
        }
     },
-    submit(e){
-        alert("Usúario Aprovado!")
-        console.log('save data', this.usuario)
-        e.preventDefault();
+
+    ...mapActions('users', ['addUsers']),
+    submit(add){
+        add = {
+            cpf: this.form.cpf,
+            nome: this.form.nome,
+            dataNas: this.form.dataNas,
+            user: this.form.user,
+            email: this.form.email,
+            senha: this.form.senha,
+            tel: this.form.tel,
+            code: this.form.code,
+            check: this.form.check
+        }
+        this.submit(add)
+        
     }
    },
    computed: {

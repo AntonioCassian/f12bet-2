@@ -6,7 +6,7 @@
 </template>
   
 <script>
-  import ComHeader from '@/components/Header.vue'
+  import ComHeader from '@/components/Headers/Header.vue'
   
   export default {
       name: 'CrashGames',

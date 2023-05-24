@@ -21,7 +21,7 @@
 
 <script>
 // @ is an alias to /src
-import Header from '@/components/Header.vue'
+import Header from '@/components/Headers/Header.vue'
 import Carousel from '@/components/carousel/Carroulsel.vue'
 import ContentTop from '@/components/ContetTop.vue'
 import TabelaMain from '@/components/Table/Table.vue'

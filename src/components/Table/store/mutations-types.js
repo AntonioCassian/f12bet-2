@@ -1,0 +1,1 @@
+export const GET_FUT = "TABLE/GET_FUT"

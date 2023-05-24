@@ -117,6 +117,7 @@
 import TableFut from './TableFut.vue'
 import TableBas from './TableBas.vue'
 import TableTen from './TableTen.vue'
+//import { mapState } from 'vuex'
 export default {
     name:'TabelaMain',
     data(){
@@ -127,6 +128,7 @@ export default {
     },
     components:{TableFut, TableBas, TableTen},
     computed: {
+        //...mapState('table', ['futebol_jogos']),
         activeFut() {
             return{
                 active: this.selecionado === 'fut' 
@@ -164,11 +166,11 @@ export default {
         Ten(){
             this.selecionado = 'ten'
         },
-        
+        //...mapActions('futebol_jogos')
         //id: Number, data: String, hora: String, time1: String, time2:String, casa: Number, empat: Number, fora: Number, pessoas: String,
     },
     mounted(){
-        this.$store.dispatch('getJogos')
+        this.$store.dispatch('GetFut')
     }
     
 }

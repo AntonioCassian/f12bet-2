@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import NavBar from './templates/Navbar.vue'
-import LineTop from './templates/LineTop.vue'
-import Login from './Login.vue'
+import NavBar from '../templates/Navbar.vue'
+import LineTop from '../templates/LineTop.vue'
+import Login from '../Login.vue'
 export default {
     name: 'CompHeader',
     data() {

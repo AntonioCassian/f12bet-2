@@ -43,7 +43,8 @@
     "rules": {
       "vue/no-parsing-error": 0,
       "eslint-disable-next-line": 0,
-      "vue/no-duplicate-attributes": "off"
+      "vue/no-duplicate-attributes": "off",
+      "vue/no-unused-components": "off"
     }
   },
   "browserslist": [

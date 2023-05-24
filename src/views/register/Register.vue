@@ -125,7 +125,7 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
+import Header from '@/components/Headers/Header.vue'
 import Footer from '@/components/Footer.vue'
 import InputLabel from '@/components/InputLabel.vue'
 import { mapActions } from 'vuex'

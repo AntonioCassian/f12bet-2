@@ -732,7 +732,7 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue'
+import Header from '../components/Headers/Header.vue'
 import Boletim from '../components/Boletim.vue'
 import MenuBar from '@/components/MenuBar.vue'
 export default {

@@ -65,6 +65,7 @@ background:#000;
 }
 </style>
 <!--::-webkit-scrollbar {
+@import '../node_modules/material-design-icons/iconfont/material-icons.css'
 background:#000;
 width: 20px;
 height: 4px;

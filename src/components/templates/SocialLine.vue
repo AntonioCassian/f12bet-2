@@ -30,7 +30,7 @@ export default {
         margin: 5px 0;
     }
     .social > a{
-        background-color: transparent;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-size: 25px;
     float: left;

@@ -5,8 +5,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store ({
-    user: []
-    /*state:{
+    user: [],
+    state:{
         futebol_jogos: [
             {id: 1, data:"04/04", hora:"16:00", time1: "Chelsea", time2:"Liverpool", casa: 2.25, empat: 3.43, fora: 3.19, pessoas: "+1185"},
             {id: 2, data:"04/05", hora:"16:00", time1: "Chelsea", time2:"Liverpool", casa: 2.25, empat: 3.43, fora: 3.19, pessoas: "+1185"},
@@ -51,5 +51,4 @@ export default new Vuex.Store ({
             return state.boletim.reduce('Não há seleções disponíveis')
         }
     },
-    */
 })

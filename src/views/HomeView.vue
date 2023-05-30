@@ -41,12 +41,7 @@ export default {
     Footer
   },
   computed:{
-    jogo_Fut(){
-        return this.$store.state.futebol_jogos
-    },
-    jogo_Bas(){
-        return this.$store.state.basquete_jogos
-      }
+    
   }
 }
 </script>

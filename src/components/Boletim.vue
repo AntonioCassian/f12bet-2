@@ -4,7 +4,7 @@
             <span>A=-</span>
             <span>Boletim de Aposta</span>
         </div>
-            <h5 v-if="boletin"></h5>
+            <!--<h5 v-if="boletin"></h5>-->
         <div class="verificacao" >
             <div>
             <table>
@@ -48,7 +48,7 @@
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Seleções</span></td>
-                        <td><span class="jogada">{{ $store.state.boletim.length }}</span></td>
+                        <td><span class="jogada">{{ contagem }}</span></td>
                     </tr>
                     <tr class="sec-minitab">
                         <td><span class="jogada">Odds totais</span></td>
@@ -104,14 +104,11 @@ export default {
         }
     },
     computed:{
-        ...mapGetters({
+        ...mapGetters('table', {
             odds: 'odds',
-            defaults: 'default'
-            
-        }),
-        boletim(){
-            return this.$store.state.boletim
-        },
+            boletim: 'bol',
+            contagem: 'contagem'    
+        })
     },
     methods: {
         removeUm(){

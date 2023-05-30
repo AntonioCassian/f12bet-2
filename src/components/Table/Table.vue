@@ -117,6 +117,7 @@
 import TableFut from './TableFut.vue'
 import TableBas from './TableBas.vue'
 import TableTen from './TableTen.vue'
+import { mapGetters } from 'vuex'
 //import { mapState } from 'vuex'
 export default {
     name:'TabelaMain',
@@ -128,7 +129,11 @@ export default {
     },
     components:{TableFut, TableBas, TableTen},
     computed: {
-        //...mapState('table', ['futebol_jogos']),
+        ...mapGetters('table',{
+            futebol_jogos: 'fut',
+            basquete_jogos: 'bas',
+            tenis_jogos: 'ten'
+        }),
         activeFut() {
             return{
                 active: this.selecionado === 'fut' 
@@ -143,16 +148,6 @@ export default {
             return {
                 active: this.selecionado === 'ten' 
             }
-        },
-        futebol_jogos(){
-            return this.$store.state.futebol_jogos
-            //return this.$store.state.jogos
-        },
-        basquete_jogos(){
-            return this.$store.state.basquete_jogos
-        },
-        tenis_jogos(){
-            return this.$store.state.tenis_jogos
         }
     },
     
@@ -169,9 +164,11 @@ export default {
         //...mapActions('futebol_jogos')
         //id: Number, data: String, hora: String, time1: String, time2:String, casa: Number, empat: Number, fora: Number, pessoas: String,
     },
-    mounted(){
+    /**
+     * mounted(){
         this.$store.dispatch('GetFut')
     }
+     */
     
 }
 </script>

@@ -15,19 +15,34 @@
     </td>
 
     <td class="number">
-        <a href=""><span @click.prevent="addUm">{{ jogoFut.casa }}</span></a>
+        <a href="">
+            <span class="numBtn"
+             @click.prevent="addUm" 
+             :class="activeUm"
+             >
+                {{ jogoFut.casa }}
+            </span>
+        </a>
     </td>
 
     <td style="width: 3px"></td>
 
         <td class="number">
-            <a href=""><span >{{ jogoFut.empat }}</span></a>
+            <a href="">
+                <span class="numBtn">
+                    {{ jogoFut.empat }}
+                </span>
+            </a>
         </td>
 
         <td style="width: 3px"></td>
 
             <td class="number">
-                <a href=""><span>{{ jogoFut.fora }}</span></a>
+                <a href="">
+                    <span class="numBtn">
+                        {{ jogoFut.fora }}
+                    </span>
+                </a>
             </td>
             
             <td class="apostadores">
@@ -40,17 +55,39 @@
 
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     name: "TableFut",
     props:{jogoFut: Object},
+    data(){
+        return{
+            selecionado: '',
+            btn: false
+        }
+    },
     methods:{
+        ...mapActions('table', ['addUmData']),
+        //...mapActions({ addUmAction: 'addUmData' }),
         addUm(){
-            this.$store.commit('addUm', this.jogoFut)
+            //const data = this.jogoFut
+            //this.addUmAction(data)
+            this.addUmData(this.jogoFut)
+            this.selecionado = 'Um'
+            //this.$store.dispatch("addUmData", data)
+            //this.$store.commit('addUmData', this.jogoFut)
+            //this.$store.boletim.dispatch('addUm', this.jogoFut)
         },
         jogoid(){
             this.$router.push({name:'jogoID', params:{id: this.JogoFut.id}})
         },
     },
+    computed: {
+        activeUm() {
+            return {
+                active: this.selecionado === 'Um'
+            }
+        },
+    }
 }
 </script>
 
@@ -70,15 +107,17 @@ export default {
     text-align: center;
     width: 100%;
 }
-.number> a > span{
+.numBtn{
     background: #232520;
     border-radius: 5px;
     position: relative;
     top: 6px;
     color: #fff;
-    padding: 5px;
+    padding: 7px;
+    font-size: 11px;
+    font-weight: bolder;
 }
-.number> a > span:hover{
+.numBtn:hover{
     background: #C9F73C;
     color: #232520;
 }
@@ -133,77 +172,9 @@ export default {
     padding: 0 2px;
 }
 
-
+.active{
+    background: linear-gradient(90deg, #8BC054 0%, #cbf160 100%);
+    color: #232520;  
+}
 
 </style>
-
-<!--
-    <table>
-                
-
-                <!--Basquete
-
-                
-                <!--Tênis 
-
-                <tbody v-else-if="selecionado === 'ten'">
-                    <tr class="titulo-tr">
-                        <td colspan="2"></td>
-                        <td colspan="3">
-                            <span class="titulo-tab">
-                                2 vias
-                            </span>
-                        </td>
-                        <td class=""></td>
-                    </tr>
-                    <tr class="titulo-tr-sec">
-                        <td colspan="2"></td>
-                        <td class="bd-td">
-                            <span>1</span>
-                        </td>
-                        <td class="widt"></td>
-                        
-                        <td class="bd-td">
-                            <span>2</span>
-                        </td>
-                        <td></td>
-                    </tr>
-
-                    <!--conteudo da tabela 
-
-                    <tr class="times-compet" v-for="jogo in tenis_jogos" :key="jogo.id">
-            
-                    <td class="data-time">
-                        <span class="data">{{ jogo.data }}</span><span class="sep">|</span><span class="time">{{ jogo.hora }}</span>
-                    </td>
-
-                    <td class="nomes">
-                        <div >
-                        <a href="">
-                            <span class="competidor">{{ jogo.time1 }}</span> 
-                        <span> - </span> 
-                        <span class="competidor">{{ jogo.time2 }}</span></a>
-                        </div>
-                    </td>
-
-                    <td class="number">
-                        <a href=""><span>{{ jogo.um }}</span></a>
-                    </td>
-
-                    <td style="width: 3px"></td>
-
-                    <td class="number">
-                        <a href=""><span>{{ jogo.dois }}</span></a>
-                    </td>
-
-                    
-                    <td class="apostadores">
-                        <span class="pes">{{ jogo.pessoas }}</span>
-                        </td>
-                    </tr>
-
-
-                </tbody>
-                
-    </table>
--->
